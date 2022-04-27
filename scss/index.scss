@@ -1,5 +1,4 @@
 @import './reset.scss';
-@import './header.scss';
 
 $color_active: #DF4E3C;
 
@@ -14,6 +13,110 @@ h1, h2{
   font-size: 3rem;
   color: #fff;
 }
+
+.header{
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+
+  &.scroll{
+    background: #000;
+  }
+}
+
+.navbar {
+  justify-content: space-between;
+
+  &-contacts{
+    display: block;
+
+    & a{
+      transform: scale(1);
+      transition: all .2s ease;
+      :hover{
+        transform: scale(1.2);
+        transition: all .2s ease;
+      }
+    }
+
+    & a:not(:last-child){
+      margin: 0 30px 0px 0;
+      display: inline-block ;
+    }
+  }
+}
+
+.nav-item{
+  margin: 0 40px 0 0 ;
+
+  &:hover .nav-link{
+    color: $color_active;
+  }
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.navbar-toggler{
+  border: none;
+  position: relative;
+  background-color: none;
+  }
+
+  button:focus{
+    outline: none;
+  }
+  .header_burger{
+    display: block;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    // left: 50px;
+    z-index: 10;
+  }
+  .header_burger:focus{
+    border: none;
+  }
+  .header_burger span{
+    position: absolute;
+    top: 9px;
+    left: 0;
+    height:2px;
+    width: 100%;
+    background: #fff;
+  }
+  
+  .header_burger::after,
+  .header_burger::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    height:2px;
+    width: 100%;
+    background: #fff;
+    transition: all .2s ease;
+  }
+    .header_burger::after{
+      bottom: 0;
+    }
+    .header_burger::before{
+      top: 0;
+    } 
+    .header_burger.active{
+        height: 30px;
+    }
+    .header_burger.active::before{
+        transform: rotateZ(45deg);
+        top: 14px;
+    }
+    .header_burger.active::after{
+      transform: rotateZ(-45deg);
+      top: 14px;
+  }
+  .header_burger.active span{
+      display: none;
+  }
 
 h2{
   font-family: 'Poppins', sans-serif;
@@ -37,6 +140,21 @@ h4{
     color: #fff;
     font-size: 20px;
     line-height: calc(28 / 20 * 100%);
+
+    &:hover{
+      color: #000;
+      border: 1px solid #000;
+      background: #fff;
+    }
+    &:active{
+      color: #fff;
+      border: 1px solid transparent;
+      background: #000;
+    }
+    &:focus{
+    box-shadow: none;
+    }
+    
   }
 
   .banner {
@@ -151,9 +269,21 @@ h4{
 
     >.btn{
      background: $color_active;
-     border: none;
-     padding: 14px 120px;
+     padding: 12px 118px;
      font-size: 14px;
+     border: 2px solid transparent;
+
+
+     &:hover{
+      border: 2px solid $color_active;
+      background: transparent;
+      color: $color_active;
+     }
+     &:active{
+      background: $color_active;
+     border: 2px solid transparent;
+     color: #fff;
+     }
     }
   }
 
@@ -424,6 +554,22 @@ h4{
           color: #000;
           background: #f8f8f8;
           margin: 0 0 0 20px;
+
+            &:hover{
+              color: #000;
+              border: 1px solid #fff;
+              color: #fff;
+              background: transparent;
+            }
+            &:active{
+              color: #000;
+              border: 1px solid transparent;
+              background: #fff;
+            }
+            &:focus{
+            box-shadow: none;
+          }
+
         }
 
       }
@@ -699,6 +845,7 @@ footer{
     width: 100%;
     padding: 15px 0;
     margin: 20px 0;
+    background: #22d;
   }
 
   .offers_btn{
